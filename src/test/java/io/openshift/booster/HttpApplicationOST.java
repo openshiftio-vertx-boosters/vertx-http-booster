@@ -17,7 +17,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
  * @author <a href="http://escoffier.me">Clement Escoffier</a>
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class OpenShiftIT {
+public class HttpApplicationOST {
 
     private static OpenShiftTestAssistant assistant = new OpenShiftTestAssistant();
 

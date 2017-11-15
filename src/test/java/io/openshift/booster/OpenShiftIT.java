@@ -26,7 +26,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class OpenShiftIT {
     private String project;
 
-    private final String applicationName = "http-vertx";
+    private static final String APPLICATION_NAME = System.getProperty("app.name","http-vertx");
 
     @ArquillianResource
     private OpenShiftClient client;
@@ -34,7 +34,7 @@ public class OpenShiftIT {
     @ArquillianResource
     private Session session;
 
-    @RouteURL(applicationName)
+    @RouteURL("${app.name}")
     private URL route;
 
     @Before
@@ -48,7 +48,7 @@ public class OpenShiftIT {
         await().atMost(5, TimeUnit.MINUTES).until(() -> {
                     List<Pod> list = client.pods().inNamespace(project).list().getItems();
                     return list.stream()
-                            .filter(pod -> pod.getMetadata().getName().startsWith(applicationName))
+                            .filter(pod -> pod.getMetadata().getName().startsWith(APPLICATION_NAME))
                             .filter(this::isRunning)
                             .collect(Collectors.toList()).size() >= 1;
                 }

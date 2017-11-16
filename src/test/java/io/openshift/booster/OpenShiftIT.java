@@ -26,7 +26,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class OpenShiftIT {
     private String project;
 
-    private static final String APPLICATION_NAME = System.getProperty("app.name","http-vertx");
+    private final String applicationName = System.getProperty("app.name","http-vertx");
 
     @ArquillianResource
     private OpenShiftClient client;
@@ -48,7 +48,7 @@ public class OpenShiftIT {
         await().atMost(5, TimeUnit.MINUTES).until(() -> {
                     List<Pod> list = client.pods().inNamespace(project).list().getItems();
                     return list.stream()
-                            .filter(pod -> pod.getMetadata().getName().startsWith(APPLICATION_NAME))
+                            .filter(pod -> pod.getMetadata().getName().startsWith(applicationName))
                             .filter(this::isRunning)
                             .collect(Collectors.toList()).size() >= 1;
                 }

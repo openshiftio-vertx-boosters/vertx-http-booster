@@ -156,6 +156,40 @@
                   </vertx-health-check>
                 </config>
               </enricher>
+              <resources>
+                <labels>
+                  <all>
+                    <property>
+                      <name>app.kubernetes.io/part-of</name>
+                      <value>http-api-example</value>
+                    </property>
+                    <property>
+                      <name>app.kubernetes.io/name</name>
+                      <value>http-api</value>
+                    </property>
+                    <property>
+                      <name>app.kubernetes.io/component</name>
+                      <value>frontend</value>
+                    </property>
+                    <property>
+                      <name>app.kubernetes.io/runtime</name>
+                      <value>vertx</value>
+                    </property>
+                    <property>
+                      <name>app.kubernetes.io/runtime-version</name>
+                      <value>3.8.5</value>
+                    </property>
+                  </all>
+                </labels>
+                <annotations>
+                  <all>
+                    <property>
+                      <name>app.kubernetes.io/vcs-uri</name>
+                      <value>https://github.com/openshift-vertx-examples/vertx-http-example.git</value>
+                    </property>
+                  </all>
+                </annotations>
+              </resources>
             </configuration>
           </plugin>
         </plugins>

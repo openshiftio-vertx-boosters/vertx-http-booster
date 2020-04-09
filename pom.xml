@@ -124,6 +124,25 @@
           <redeploy>true</redeploy>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
+        <version>4.0.0</version>
+        <executions>
+          <execution>
+            <id>get-the-git-infos</id>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+            <phase>initialize</phase>
+          </execution>
+        </executions>
+        <configuration>
+          <includeOnlyProperties>
+            <includeOnlyProperty>^git.remote.origin.url$</includeOnlyProperty>
+          </includeOnlyProperties>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -142,7 +161,9 @@
                 <goals>
                   <goal>resource</goal>
                   <goal>build</goal>
+                  <goal>apply</goal>
                 </goals>
+                <phase>package</phase>
               </execution>
             </executions>
             <configuration>
@@ -177,7 +198,7 @@
                     </property>
                     <property>
                       <name>app.kubernetes.io/runtime-version</name>
-                      <value>3.8.5</value>
+                      <value>${vertx.version}</value>
                     </property>
                   </all>
                 </labels>
@@ -185,7 +206,7 @@
                   <all>
                     <property>
                       <name>app.kubernetes.io/vcs-uri</name>
-                      <value>https://github.com/openshift-vertx-examples/vertx-http-example.git</value>
+                      <value>${git.remote.origin.url}</value>
                     </property>
                   </all>
                 </annotations>

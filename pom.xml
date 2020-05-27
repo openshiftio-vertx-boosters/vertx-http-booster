@@ -4,14 +4,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.openshift.example</groupId>
   <artifactId>http-vertx</artifactId>
-  <version>38-SNAPSHOT</version>
+  <version>40-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Vert.x - HTTP</name>
   <description>Exposes an HTTP API using Vert.x</description>
 
   <properties>
-    <vertx.version>3.9.0</vertx.version>
+    <vertx.version>3.9.1</vertx.version>
     <vertx-maven-plugin.version>1.0.22</vertx-maven-plugin.version>
     <vertx.verticle>io.openshift.example.HttpApplication</vertx.verticle>
     <fabric8-maven-plugin.version>4.4.1</fabric8-maven-plugin.version>
@@ -74,7 +74,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.15.0</version>
+      <version>3.16.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -86,7 +86,7 @@
     <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <scope>test</scope>
     </dependency>
 
@@ -99,7 +99,7 @@
     <dependency>
       <groupId>io.fabric8</groupId>
       <artifactId>openshift-client</artifactId>
-      <version>4.9.0</version>
+      <version>4.10.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
